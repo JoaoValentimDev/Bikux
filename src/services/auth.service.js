@@ -1,8 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain:  process.env.REACT_APP_AUTH_DOMAIN,
@@ -13,9 +11,7 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID 
 } 
 
-
 firebase.initializeApp(firebaseConfig);
-
 
 export async function login(email, password) {
     try {
@@ -39,20 +35,13 @@ export async function logout() {
 }
 
 function IsLoggedIn () {
-        
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             console.log("user logado :: ", user);
         }else {
             console.log("user não logado");
-            }
-        })
-
+        }
+    });
 }
 
 IsLoggedIn ();
-
- 
-    
-
- 
